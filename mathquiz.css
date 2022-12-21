@@ -1,0 +1,19 @@
+.custom-alert{
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+.custom-alert h1{
+    font: 24px;
+    color: aqua;
+}
+.time{
+    background-color: aqua;
+    height: 220px;
+    width: 220px;
+    border-radius: 100%;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 50px;
+}

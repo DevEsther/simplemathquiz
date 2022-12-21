@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./mathquiz.css">
+</head>
+<div id="custom-alert" class="custom-alert" style="display: none;">
+    <h1>correct</h1>
+    <p>continue</p>
+    <div class="buttons">
+        <button onclick="dismissalert()">ok</button>
+        <button onclick="ignorealert()">ignore</button>
+
+    
+    </div>
+</div>
+<body style="background-color:rgb(69, 34, 34) ;" id="quiz">
+    <div class="time" id="countdown"> time remaining:
+        <span id="timer"></span>
+    </div>
+    <center>
+        <h1 style="font-size:55px ;color:aqua"> simple math quiz</h1>
+        <br>
+        <br>
+        <br>
+        <h2 id="question"></h2>
+        <input type="text" placeholder="type your answer"  name="answer" id="answer" style="width: 250px; background-color: aqua; height: 40px; font-size: 32px;">
+        <button style="background-color:rgb(75, 54, 54) ; font-size: 30px;" onclick="fire()">calculate</button>
+        <!-- <div class="time" id="countdown"> time remaining:
+            <span id="timer"></span>
+        </div> -->
+    </center>
+    
+</body>
+<script>
+
+    const timelimit = 60;
+    const endtime =new Date() .getTime() + (timelimit * 1000);
+    const interval = setInterval(function(){
+        const timeRemaning =
+        Math.round((endtime - new 
+        Date().getTime() ) / 1000);
+        const minute = Math.floor(timeRemaning /60);
+        const seconds =timeRemaning % 60;
+        document.getElementById('timer').innerHTML =`${minute}: ${seconds}`;
+
+        if (timeRemaning <= 0){
+            clearInterval(interval);
+            document.getElementById("quiz").submit();
+        }
+    }, 1000);
+        document.getElementById("quiz").addEventListener("submit",function(){
+            clearInterval(interval);
+        });
+    function showcustomalert(){
+        document.getElementById("custom-alert").style.display="block"
+    }
+
+    function dismissalert(){
+        document.getElementById("custom-alert").style.display ="none"
+    }
+    function ignorealert(){}
+    var minimum =1;
+    var maximum = 500;
+    var int1 = Math.floor(Math.random()*(maximum - minimum +1)) + minimum;
+    var int2 = Math.floor(Math.random()* (maximum-minimum +1)) +minimum;
+    document.getElementById('question').innerHTML =int1 +" " +"+" +"" + int2;
+    var qanswer = int1 +int2;
+
+    function fire(){
+        var uanswer = document.getElementById('answer').value;
+        if(uanswer ==qanswer){
+            alert("good job😜! reload the page to continue");
+        }
+        else{
+            alert("wrong😪! you no no book🤣")
+        }
+    }
+</script>
+</html>
